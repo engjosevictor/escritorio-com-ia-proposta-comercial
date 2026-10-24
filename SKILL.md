@@ -128,20 +128,33 @@ Atenciosamente,
 {Cidade/UF}, {data por extenso ou DD/MM/AAAA}.   ← alinhado à direita
 ```
 
-Regras de formatação do HTML:
+Regras de formatação do HTML (literais, não é sugestão de estilo, é o formato do
+documento):
 
-- Logo centralizado no topo de cada página
-- Título da proposta centralizado, negrito, logo abaixo do logo
+- **Documento, não site.** É a mesma coisa que abrir um .docx ou um PDF de contrato:
+  fundo branco (`#ffffff`), texto preto (`#000000`), uma fonte só, sem variação de cor em
+  lugar nenhum do corpo. O único elemento visual fora do texto é a logo no topo
+- **Proibido:** caixa ou retângulo colorido atrás de qualquer bloco de texto, barra ou
+  borda lateral colorida, número de seção dentro de círculo ou badge colorido, qualquer
+  cor de destaque (laranja, azul ou qualquer outra) em título, número de seção ou valor,
+  fundo cinza ou de qualquer cor em cartão/card. Se o rascunho ficar parecendo o preview de
+  uma landing page ou de uma proposta de agência, está errado, refazer
+- **Não consultar `design-guide.md` nem qualquer arquivo de marca pra cor ou fonte do
+  corpo do documento.** Esses arquivos servem só pra achar o caminho do arquivo de logo na
+  Fase 0, nada além disso entra no HTML
+- Logo centralizado no topo de cada página, do jeito que o arquivo já é (sem fundo colorido
+  adicionado, sem moldura)
+- Título da proposta centralizado, negrito, preto, logo abaixo do logo, sem subtítulo
+  colorido nem linha decorativa
 - Cada cabeçalho numerado (`1.) OBJETO DA PROPOSTA`, `2.) ESCOPO DA PROPOSTA` etc.) em
-  negrito
-- Subtítulo de disciplina (quando houver mais de uma no Escopo) em negrito, sozinho na
-  linha, terminado em dois pontos
-- Itens de lista com `•`, cada um terminado em ponto e vírgula
-- Bloco de assinatura (nome, registro, negócio) centralizado
-- Linha de cidade e data alinhada à direita, por último
-- Texto sempre preto sobre fundo branco, fonte neutra (ex. Helvetica/Arial), igual a
-  qualquer documento técnico formal. A identidade visual do usuário não entra na cor nem na
-  fonte do texto, só na logo
+  negrito preto, sem numeração em círculo nem cor
+- Subtítulo de disciplina (quando houver mais de uma no Escopo) em negrito preto, sozinho
+  na linha, terminado em dois pontos
+- Itens de lista com `•` preto, cada um terminado em ponto e vírgula
+- Valor e condições de pagamento em texto normal, do mesmo tamanho e cor do resto do
+  documento, nunca destacado em fonte grande ou colorida
+- Bloco de assinatura (nome, registro, negócio) centralizado, texto preto
+- Linha de cidade e data alinhada à direita, por último, texto preto
 - Arquivo único, HTML autocontido (CSS inline), nomeado
   `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.html` (criar a pasta `orcamentos/`
   se não existir)
