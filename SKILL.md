@@ -154,8 +154,12 @@ Regras de formatação do HTML:
   margens padrão) pra imprimir o próprio HTML direto em
   `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.pdf`, no mesmo lugar e com o mesmo
   nome do HTML, só trocando a extensão
-- Se não houver navegador headless disponível no ambiente, aí sim avisar o usuário e
-  indicar Ctrl+P (ou Cmd+P no Mac) como alternativa manual
+- Se não houver navegador headless disponível no ambiente (ex. Playwright/Chromium não
+  instalado), avisar o usuário e perguntar se ele quer que a skill instale o que falta
+  agora (ex. `npm install -D playwright` seguido de `npx playwright install chromium`,
+  ajustando ao gerenciador de pacote e ao sistema operacional dele). Só instalar depois do
+  "sim" explícito. Se ele preferir não instalar, seguir com Ctrl+P (ou Cmd+P no Mac) como
+  alternativa manual
 - Confirmar no fim que o PDF foi gerado e onde ele está salvo
 
 ## Regras
