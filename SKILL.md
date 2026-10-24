@@ -148,9 +148,15 @@ Regras de formatação do HTML:
 
 ## Fase 5 — Entregar
 
-- Abrir o arquivo no navegador pro usuário conferir
-- Lembrar que Ctrl+P (ou Cmd+P no Mac) salva como PDF direto do navegador, pra mandar por
-  WhatsApp ou e-mail sem precisar de mais nenhuma ferramenta
+- Abrir o arquivo HTML pro usuário conferir antes de gerar o PDF
+- Depois que o usuário aprovar o HTML, gerar o PDF automaticamente, sem pedir pra ele
+  apertar Ctrl+P na mão. Usar um navegador headless (ex. Playwright/Chromium, formato A4,
+  margens padrão) pra imprimir o próprio HTML direto em
+  `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.pdf`, no mesmo lugar e com o mesmo
+  nome do HTML, só trocando a extensão
+- Se não houver navegador headless disponível no ambiente, aí sim avisar o usuário e
+  indicar Ctrl+P (ou Cmd+P no Mac) como alternativa manual
+- Confirmar no fim que o PDF foi gerado e onde ele está salvo
 
 ## Regras
 
