@@ -9,14 +9,16 @@ Gera uma proposta comercial (orçamento) em HTML, pronta pra virar PDF (Ctrl+P),
 de documento técnico numerado, igual ao que um escritório de projeto ou consultoria manda
 pro cliente assinar. Não é deck de apresentação nem página de vendas, é documento formal.
 
-## Fase 0 — Marca (só na primeira vez, ou se mudar)
+## Fase 0 — Logo e dados do responsável (só na primeira vez, ou se mudar)
 
-- Procurar a pasta de marca (`Marca/`, `marca/`, `brand/`, `identidade/`) e o
-  `design-guide.md` dentro dela
+O documento é sempre texto preto em fundo branco, igual qualquer proposta técnica formal.
+A identidade do usuário entra só pela logo no topo, nada de cor nem fonte de marca.
+
+- Procurar a pasta de marca (`Marca/`, `marca/`, `brand/`, `identidade/`) e achar o arquivo
+  de logo. Abrir pra conferir se é a versão clara, que funciona em fundo branco (logo
+  pensado pra fundo escuro some)
 - Ler `_contexto/empresa.md` (ou `AGENTS.md`/`CLAUDE.md`) pra puxar nome do responsável
   técnico, registro profissional (CREA, CAU, CFT ou equivalente) e nome do negócio
-- Achar o arquivo de logo e abrir pra conferir se é a versão clara, que funciona em fundo
-  branco (documento é sempre fundo branco, logo pensado pra fundo escuro some)
 - Mostrar o que encontrou e perguntar só o que faltou. Nunca escrever nada antes de
   confirmar
 
@@ -128,8 +130,9 @@ Regras de formatação do HTML:
 - Itens de lista com `•`, cada um terminado em ponto e vírgula
 - Bloco de assinatura (nome, registro, negócio) centralizado
 - Linha de cidade e data alinhada à direita, por último
-- Cor e fonte vêm do `design-guide.md` (ou um fallback neutro, se a marca ainda não tiver
-  sido preenchida)
+- Texto sempre preto sobre fundo branco, fonte neutra (ex. Helvetica/Arial), igual a
+  qualquer documento técnico formal. A identidade visual do usuário não entra na cor nem na
+  fonte do texto, só na logo
 - Arquivo único, HTML autocontido (CSS inline), nomeado
   `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.html` (criar a pasta `orcamentos/`
   se não existir)
