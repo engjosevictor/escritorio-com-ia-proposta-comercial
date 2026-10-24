@@ -1,20 +1,20 @@
 ---
 name: proposta-comercial
-description: Gera proposta comercial (orçamento) em HTML de página única, simples, no padrão visual da marca do usuário, a partir de uma conversa sobre o serviço. Vai salvando o escopo descrito como catálogo reutilizável pras próximas propostas. Use quando o usuário pedir pra montar proposta, orçamento, proposta comercial, "monta a proposta pro cliente X", "faz o orçamento desse projeto", ou quiser editar uma proposta já gerada.
+description: Gera proposta comercial (orçamento) em HTML pronto pra virar PDF, no formato de documento técnico numerado (objeto, escopo, itens não considerados, disposições gerais, prazo, honorários, validade), com a marca do usuário. Vai salvando o escopo descrito como catálogo reutilizável pras próximas propostas. Use quando o usuário pedir pra montar proposta, orçamento, proposta comercial, "monta a proposta pro cliente X", "faz o orçamento desse projeto", ou quiser editar uma proposta já gerada.
 ---
 
 # Proposta Comercial
 
-Gera uma proposta comercial (orçamento) em HTML de página única, simples, no mesmo padrão
-visual dos documentos do usuário. O cliente abre e lê, do jeito que já é de praxe mandar
-proposta por link ou PDF. Não é deck de apresentação nem página de vendas, é documento.
+Gera uma proposta comercial (orçamento) em HTML, pronta pra virar PDF (Ctrl+P), no formato
+de documento técnico numerado, igual ao que um escritório de projeto ou consultoria manda
+pro cliente assinar. Não é deck de apresentação nem página de vendas, é documento formal.
 
 ## Fase 0 — Marca (só na primeira vez, ou se mudar)
 
 - Procurar a pasta de marca (`Marca/`, `marca/`, `brand/`, `identidade/`) e o
   `design-guide.md` dentro dela
 - Ler `_contexto/empresa.md` (ou `AGENTS.md`/`CLAUDE.md`) pra puxar nome do responsável
-  técnico, registro profissional e nome do negócio
+  técnico, registro profissional (CREA, CAU, CFT ou equivalente) e nome do negócio
 - Achar o arquivo de logo e abrir pra conferir se é a versão clara, que funciona em fundo
   branco (documento é sempre fundo branco, logo pensado pra fundo escuro some)
 - Mostrar o que encontrou e perguntar só o que faltou. Nunca escrever nada antes de
@@ -23,50 +23,116 @@ proposta por link ou PDF. Não é deck de apresentação nem página de vendas, 
 ## Fase 1 — Escopo do serviço
 
 - Perguntar o escopo do serviço pro usuário descrever com as próprias palavras: o que entra
-  nesse tipo de proposta, pra qual tipo de projeto ou cliente
+  nesse tipo de proposta, pra qual tipo de projeto ou cliente, separado por disciplina ou
+  frente de trabalho quando fizer sentido (ex. concreto armado, estrutura metálica,
+  elétrico, arquitetura, consultoria)
 - Checar se já existe `orcamentos/catalogo-escopo.md` na pasta do projeto
   - Existe: mostrar os itens já salvos que combinam com o que o usuário descreveu agora,
     perguntar se quer reaproveitar algum e complementar com o que for novo
-  - Não existe: criar o arquivo com o que o usuário descreveu, organizado por tipo de
-    serviço
+  - Não existe: criar o arquivo com o que o usuário descreveu, organizado por disciplina ou
+    frente de trabalho
 - Toda vez que aparecer um item de escopo novo numa proposta, ele entra no catálogo
   também. O catálogo cresce sozinho com o uso, nunca precisa ser montado na mão antes de
   começar a usar a skill
-- Perguntar também o que NÃO está incluso (itens não considerados) e se existe alguma
-  disposição geral que costuma entrar nesse tipo de proposta (prazo de resposta do cliente,
-  forma de revisão, validade padrão). Mesma lógica: se for novo, também vai pro catálogo
+- Perguntar também o que NÃO está incluso (itens não considerados). Mesma lógica: se for
+  novo, também vai pro catálogo
 
 ## Fase 2 — Dados da proposta
 
 Perguntar numa mensagem só:
 
-1. Cliente (nome, projeto, cidade se fizer diferença)
-2. Valor: único, direto, ou calculado por m² (nesse caso, pedir a metragem)
-3. Prazo de execução: data fixa, ou "X dias a partir da assinatura do contrato" (quando for
-   esse caso, avisar que a data final só fecha quando o contrato for assinado de verdade)
-4. Validade da proposta (sugestão padrão: 7 dias)
-5. Forma de pagamento
+1. Número da proposta (olhar o maior número já usado em `orcamentos/`, se houver, e sugerir
+   o próximo; se for a primeira, perguntar de onde começar a numerar)
+2. Cliente, projeto e endereço ou localização, se fizer diferença pro objeto
+3. Disciplina(s) envolvida(s) (usadas no Objeto e pra agrupar o Escopo, se houver mais de
+   uma)
+4. Valor: único, direto, ou calculado por m² (nesse caso, pedir a metragem)
+5. Forma de pagamento (parcelas, percentual de cada uma, gatilho de cada parcela: aceite da
+   proposta, entrega, assinatura etc.)
+6. Prazo de execução: data fixa, ou "X dias [úteis ou corridos] a partir da assinatura do
+   contrato" (quando for esse caso, avisar que a data final só fecha quando o contrato for
+   assinado de verdade)
+7. Disposições gerais que sempre entram nesse tipo de proposta (ex. emissão de ART/RRT,
+   formato de entrega dos arquivos) — reaproveitar do catálogo se já tiver, perguntar se for
+   novo
+8. Validade da proposta (sugestão padrão: 10 dias corridos)
 
 Regra dura: nunca inventar valor, prazo ou condição. O que não for informado entra no
 documento como `[a confirmar]`, visível, em vez de ser preenchido por dedução.
 
 ## Fase 3 — Esqueleto antes de gerar
 
-Mostrar em bullets a estrutura da proposta (seção por seção, com a frase central de cada
-uma) e esperar aprovação do usuário antes de montar o HTML. Corrigir o esqueleto é rápido,
-corrigir o documento pronto não é.
+Mostrar em bullets a estrutura da proposta, seção por seção (mesma ordem da Fase 4) com a
+frase central de cada uma, e esperar aprovação do usuário antes de montar o HTML. Corrigir
+o esqueleto é rápido, corrigir o documento pronto não é.
 
 ## Fase 4 — Gerar o documento
 
-- Layout de documento, não de página de vendas: logo centralizado no topo, título, corpo
-  de texto organizado por seção (Objeto, Escopo, Itens não considerados, Valor, Prazo,
-  Forma de pagamento, Disposições gerais, Validade), assinatura no fim
+Estrutura fixa, igual a uma proposta técnica formal. Seguir essa ordem e essa numeração:
+
+```
+PROPOSTA TÉCNICA Nº {número}/{ano com 2 dígitos}        ← título, centralizado, negrito
+
+1.) OBJETO DA PROPOSTA
+Projeto referente a {disciplina(s)}, para {nome do projeto/cliente}, conforme descrição:
+• Endereço: {endereço, se houver}
+• Proprietário/Cliente: {nome}
+• Área [estruturada/do projeto]: {metragem, se houver}
+
+2.) ESCOPO DA PROPOSTA
+Os projetos e serviços que estamos propondo são os seguintes:
+
+[Se houver mais de uma disciplina, um subtítulo em negrito por disciplina, ex.
+"Concreto armado:", seguido da lista de itens daquela disciplina. Se for só uma
+disciplina, lista direta sem subtítulo.]
+• {item};
+• {item};
+
+3.) ITENS NÃO CONSIDERADOS NA PROPOSTA
+• {item};
+
+4.) DISPOSIÇÕES GERAIS
+{parágrafos curtos, um por disposição}
+
+5.) PRAZO PARA EXECUÇÃO DOS SERVIÇOS
+O prazo para a execução dos serviços descritos no ESCOPO DA PROPOSTA é de {prazo}.
+
+6.) HONORÁRIOS
+• O honorário para execução dos trabalhos aqui propostos é de {valor}.
+• Forma de pagamento:
+{parcela 1, valor, percentual, gatilho};
+{parcela 2, valor, percentual, gatilho};
+
+7.) VALIDADE DA PROPOSTA
+A presente proposta tem validade de {prazo}, a partir da data de recebimento.
+
+Sem mais, ficamos no aguardo, nos colocando à disposição para maiores esclarecimentos.
+
+Atenciosamente,
+
+{Nome do responsável técnico}        ← centralizado
+{Registro profissional}              ← centralizado
+{Nome do negócio}                    ← centralizado
+
+{Cidade/UF}, {data por extenso ou DD/MM/AAAA}.   ← alinhado à direita
+```
+
+Regras de formatação do HTML:
+
+- Logo centralizado no topo de cada página
+- Título da proposta centralizado, negrito, logo abaixo do logo
+- Cada cabeçalho numerado (`1.) OBJETO DA PROPOSTA`, `2.) ESCOPO DA PROPOSTA` etc.) em
+  negrito
+- Subtítulo de disciplina (quando houver mais de uma no Escopo) em negrito, sozinho na
+  linha, terminado em dois pontos
+- Itens de lista com `•`, cada um terminado em ponto e vírgula
+- Bloco de assinatura (nome, registro, negócio) centralizado
+- Linha de cidade e data alinhada à direita, por último
 - Cor e fonte vêm do `design-guide.md` (ou um fallback neutro, se a marca ainda não tiver
   sido preenchida)
-- Logo puxado direto do arquivo encontrado na Fase 0
-- Arquivo único, HTML autocontido (CSS inline), salvo em
-  `orcamentos/proposta-{cliente}-{AAAA-MM-DD}.html` (criar a pasta `orcamentos/` se não
-  existir)
+- Arquivo único, HTML autocontido (CSS inline), nomeado
+  `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.html` (criar a pasta `orcamentos/`
+  se não existir)
 
 ## Fase 5 — Entregar
 
@@ -81,7 +147,7 @@ corrigir o documento pronto não é.
    um catálogo do zero antes de poder usar a skill
 3. Uma proposta por cliente. Nada de reaproveitar proposta antiga só trocando o nome sem
    revisar escopo e valor
-4. Documento simples: sem seção grande de "quem somos", sem linguagem de página de vendas.
-   É proposta de prestação de serviço, não material de marketing
+4. Seguir à risca a estrutura numerada da Fase 4. É isso que dá cara de documento formal,
+   não de texto corrido
 5. Abrir no navegador e olhar antes de entregar: logo claro em fundo claro não dá erro, só
    some. Se sumiu, usar a versão escura do logo ou o nome em texto
