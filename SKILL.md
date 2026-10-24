@@ -17,6 +17,15 @@ A identidade do usuário entra só pela logo no topo, nada de cor nem fonte de m
 - Procurar a pasta de marca (`Marca/`, `marca/`, `brand/`, `identidade/`) e achar o arquivo
   de logo. Abrir pra conferir se é a versão clara, que funciona em fundo branco (logo
   pensado pra fundo escuro some)
+- Conferir se o arquivo tem fundo transparente (PNG com alpha). Se tiver fundo sólido (um
+  retângulo branco, cinza ou de cor por trás da marca), isso aparece como uma caixa no topo
+  do documento, que é branco. Nesse caso, avisar o usuário e oferecer:
+  1. Se existir alguma skill de edição de imagem instalada (ex. remoção de fundo), usar pra
+     gerar uma versão transparente e perguntar se pode salvar essa versão na pasta de marca
+  2. Se o fundo do arquivo já for branco puro (ou bem próximo), pode seguir assim mesmo, o
+     contraste contra o fundo do documento é mínimo
+  3. Sem nenhuma das duas opções, avisar que vai aparecer uma caixa ao redor da logo e
+     perguntar se o usuário quer seguir assim ou mandar outro arquivo
 - Ler `_contexto/empresa.md` (ou `AGENTS.md`/`CLAUDE.md`) pra puxar nome do responsável
   técnico, registro profissional (CREA, CAU, CFT ou equivalente) e nome do negócio
 - Mostrar o que encontrou e perguntar só o que faltou. Nunca escrever nada antes de
