@@ -84,13 +84,13 @@ Estrutura fixa, igual a uma proposta técnica formal. Seguir essa ordem e essa n
 ```
 PROPOSTA TÉCNICA Nº {número}/{ano com 2 dígitos}        ← título, centralizado, negrito
 
-1.) OBJETO DA PROPOSTA
+1. OBJETO DA PROPOSTA
 Projeto referente a {disciplina(s)}, para {nome do projeto/cliente}, conforme descrição:
 • Endereço: {endereço, se houver}
 • Proprietário/Cliente: {nome}
 • Área [estruturada/do projeto]: {metragem, se houver}
 
-2.) ESCOPO DA PROPOSTA
+2. ESCOPO DA PROPOSTA
 Os projetos e serviços que estamos propondo são os seguintes:
 
 [Se houver mais de uma disciplina, um subtítulo em negrito por disciplina, ex.
@@ -99,22 +99,22 @@ disciplina, lista direta sem subtítulo.]
 • {item};
 • {item};
 
-3.) ITENS NÃO CONSIDERADOS NA PROPOSTA
+3. ITENS NÃO CONSIDERADOS NA PROPOSTA
 • {item};
 
-4.) DISPOSIÇÕES GERAIS
+4. DISPOSIÇÕES GERAIS
 {parágrafos curtos, um por disposição}
 
-5.) PRAZO PARA EXECUÇÃO DOS SERVIÇOS
+5. PRAZO PARA EXECUÇÃO DOS SERVIÇOS
 O prazo para a execução dos serviços descritos no ESCOPO DA PROPOSTA é de {prazo}.
 
-6.) HONORÁRIOS
+6. HONORÁRIOS
 • O honorário para execução dos trabalhos aqui propostos é de {valor}.
 • Forma de pagamento:
 {parcela 1, valor, percentual, gatilho};
 {parcela 2, valor, percentual, gatilho};
 
-7.) VALIDADE DA PROPOSTA
+7. VALIDADE DA PROPOSTA
 A presente proposta tem validade de {prazo}, a partir da data de recebimento.
 
 Sem mais, ficamos no aguardo, nos colocando à disposição para maiores esclarecimentos.
@@ -146,7 +146,7 @@ documento):
   adicionado, sem moldura)
 - Título da proposta centralizado, negrito, preto, logo abaixo do logo, sem subtítulo
   colorido nem linha decorativa
-- Cada cabeçalho numerado (`1.) OBJETO DA PROPOSTA`, `2.) ESCOPO DA PROPOSTA` etc.) em
+- Cada cabeçalho numerado (`1. OBJETO DA PROPOSTA`, `2. ESCOPO DA PROPOSTA` etc.) em
   negrito preto, sem numeração em círculo nem cor
 - Subtítulo de disciplina (quando houver mais de uma no Escopo) em negrito preto, sozinho
   na linha, terminado em dois pontos
@@ -158,7 +158,7 @@ documento):
 - Página em formato A4 retrato (vertical). O HTML já nasce pensado pra imprimir nessas
   dimensões, com `@page { size: A4 portrait; }` no CSS e margem de impressão normal
 - **Quebra de página por conteúdo, não por seção inteira.** Cada seção numerada
-  (`1.) OBJETO`, `2.) ESCOPO` etc.) pode começar numa página e continuar na seguinte sem
+  (`1. OBJETO`, `2. ESCOPO` etc.) pode começar numa página e continuar na seguinte sem
   problema, igual um documento de verdade. O que não pode acontecer:
   - Um cabeçalho numerado sozinho no fim da página, com o corpo dele todo na página
     seguinte (`break-after: avoid` no cabeçalho, pra ele ficar grudado na primeira linha
@@ -166,7 +166,7 @@ documento):
   - Um item de lista cortado no meio, com metade da frase numa página e metade na outra
     (`break-inside: avoid` só no item individual, `<li>` ou parágrafo curto, nunca na
     seção inteira)
-  - **Nunca aplicar `break-inside: avoid` na seção inteira** (todo o "2.) ESCOPO", por
+  - **Nunca aplicar `break-inside: avoid` na seção inteira** (todo o "2. ESCOPO", por
     exemplo). Isso empurra a seção inteira pra próxima página mesmo quando metade dela
     cabia na página atual, deixando espaço em branco sobrando. Deixar o navegador quebrar
     o texto corrido normalmente, só protegendo cabeçalho e itens curtos individuais
