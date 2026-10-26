@@ -155,6 +155,9 @@ documento):
   documento, nunca destacado em fonte grande ou colorida
 - Bloco de assinatura (nome, registro, negócio) centralizado, texto preto
 - Linha de cidade e data alinhada à direita, por último, texto preto
+- Página em formato A4 retrato (vertical). O HTML já nasce pensado pra imprimir nessas
+  dimensões, com `@page { size: A4 portrait; }` no CSS, quebra de página limpa entre
+  seções longas e margem de impressão normal (não corta texto nem assinatura na borda)
 - Arquivo único, HTML autocontido (CSS inline), nomeado
   `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.html` (criar a pasta `orcamentos/`
   se não existir)
@@ -163,8 +166,8 @@ documento):
 
 - Abrir o arquivo HTML pro usuário conferir antes de gerar o PDF
 - Depois que o usuário aprovar o HTML, gerar o PDF automaticamente, sem pedir pra ele
-  apertar Ctrl+P na mão. Usar um navegador headless (ex. Playwright/Chromium, formato A4,
-  margens padrão) pra imprimir o próprio HTML direto em
+  apertar Ctrl+P na mão. Usar um navegador headless (ex. Playwright/Chromium, formato A4
+  retrato/vertical, margens padrão) pra imprimir o próprio HTML direto em
   `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.pdf`, no mesmo lugar e com o mesmo
   nome do HTML, só trocando a extensão
 - Se não houver navegador headless disponível no ambiente (ex. Playwright/Chromium não
