@@ -156,8 +156,22 @@ documento):
 - Bloco de assinatura (nome, registro, negócio) centralizado, texto preto
 - Linha de cidade e data alinhada à direita, por último, texto preto
 - Página em formato A4 retrato (vertical). O HTML já nasce pensado pra imprimir nessas
-  dimensões, com `@page { size: A4 portrait; }` no CSS, quebra de página limpa entre
-  seções longas e margem de impressão normal (não corta texto nem assinatura na borda)
+  dimensões, com `@page { size: A4 portrait; }` no CSS e margem de impressão normal
+- **Quebra de página por conteúdo, não por seção inteira.** Cada seção numerada
+  (`1.) OBJETO`, `2.) ESCOPO` etc.) pode começar numa página e continuar na seguinte sem
+  problema, igual um documento de verdade. O que não pode acontecer:
+  - Um cabeçalho numerado sozinho no fim da página, com o corpo dele todo na página
+    seguinte (`break-after: avoid` no cabeçalho, pra ele ficar grudado na primeira linha
+    do conteúdo)
+  - Um item de lista cortado no meio, com metade da frase numa página e metade na outra
+    (`break-inside: avoid` só no item individual, `<li>` ou parágrafo curto, nunca na
+    seção inteira)
+  - **Nunca aplicar `break-inside: avoid` na seção inteira** (todo o "2.) ESCOPO", por
+    exemplo). Isso empurra a seção inteira pra próxima página mesmo quando metade dela
+    cabia na página atual, deixando espaço em branco sobrando. Deixar o navegador quebrar
+    o texto corrido normalmente, só protegendo cabeçalho e itens curtos individuais
+  - Bloco de assinatura (nome, registro, negócio, cidade e data) sempre junto, sem quebrar
+    no meio, mesmo que isso jogue ele inteiro pra página seguinte
 - Arquivo único, HTML autocontido (CSS inline), nomeado
   `orcamentos/Orçamento nº {número}_{ano} - {Cliente}.html` (criar a pasta `orcamentos/`
   se não existir)
